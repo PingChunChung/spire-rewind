@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'SpireRewind' Or '$(MSBuildProjectName)' == 'SpireRewind.Core'">
+    <BaseIntermediateOutputPath>obj/$(MSBuildProjectName)/</BaseIntermediateOutputPath>
+    <!-- The shipped DLL must not name the build machine: source paths and the PDB path are mapped to /_/, and the
+         symbols are embedded instead of written next to the DLL. build.ps1 scans the result for local paths. -->
+    <DebugType>embedded</DebugType>
+    <PathMap>$(MSBuildProjectDirectory)=/_/</PathMap>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+</Project>

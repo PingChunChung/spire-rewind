@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net9.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><EnableDefaultCompileItems>false</EnableDefaultCompileItems></PropertyGroup>
+  <ItemGroup><Compile Include="src/Core/**/*.cs" /></ItemGroup>
+  <ItemGroup><EmbeddedResource Include="tools/replay-viewer.html" LogicalName="SpireRewind.replay-viewer.html" /></ItemGroup>
+</Project>

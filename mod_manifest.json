@@ -1,0 +1,11 @@
+{
+  "id": "SpireRewind",
+  "name": "Spire Rewind",
+  "author": "Chung Ping Chun",
+  "description": "Automatic checkpoints at the game's own save points, rewind to an earlier floor of the current single-player run with confirmation and a backup, and an offline HTML replay of the whole run.",
+  "version": "0.1.0",
+  "has_pck": false,
+  "has_dll": true,
+  "affects_gameplay": true,
+  "min_game_version": "0.107.1"
+}

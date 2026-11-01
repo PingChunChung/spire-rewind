@@ -1,0 +1,13 @@
+bin/
+obj/
+dist/
+.install-backups/
+.scratch/
+.vs/
+*.user
+memory/
+__pycache__/
+test-results/
+# Filled by build.ps1 -Workshop; the uploader writes its log next to the workspace.
+workshop/content/
+mod-uploader.log
