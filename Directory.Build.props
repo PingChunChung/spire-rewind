@@ -6,5 +6,7 @@
     <DebugType>embedded</DebugType>
     <PathMap>$(MSBuildProjectDirectory)=/_/</PathMap>
     <Deterministic>true</Deterministic>
+    <!-- With a git remote the SDK writes Source Link JSON into the PDB, and its keys are unmapped local paths. -->
+    <EnableSourceLink>false</EnableSourceLink>
   </PropertyGroup>
 </Project>
