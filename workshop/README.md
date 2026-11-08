@@ -23,4 +23,4 @@ Before each upload, update `changeNote` to match the CHANGELOG entry and check t
 
 1. Upload with `visibility` left at `private`. Commit the `mod_id.txt` the uploader writes.
 2. On the Workshop item page (visible to the uploading account only), check the title, description, thumbnail and tags, then subscribe from the same account and start the game: the mod must appear in the game's mod list and load.
-3. Only then switch the item to public: either set `"visibility": "public"` in `workshop.json` and upload again, or change the visibility on the item page. The description's Steam Cloud warning stays until the Steam Cloud test in `docs/TESTING.md` has been done.
+3. Only then switch the item to public: either set `"visibility": "public"` in `workshop.json` and upload again, or change the visibility on the item page.

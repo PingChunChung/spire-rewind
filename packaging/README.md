@@ -29,7 +29,7 @@ Minimum game version 0.107.1; tested only on v0.107.1. On a newer game version t
 
 ## Before you rely on it
 
-- Rewinding **rewrites the active run save** through the game's own save system (which Steam Cloud may sync). The mod keeps a backup checkpoint first, and tries to restore the original save if loading fails, but it has **not been tested with Steam Cloud sync yet**. Back up your save folder before using it on a run you care about. The mod has no telemetry and no network service of its own; checkpoints and exports stay on this computer.
+- Rewinding **rewrites the active run save** through the game's own save system (which Steam Cloud may sync). The mod keeps a backup checkpoint first, and tries to restore the original save if loading fails, and refuses to rewind when the local and Steam Cloud copies differ. It was tested with Steam Cloud sync on one machine; backing up your save folder before using it on a run you care about is still a good idea. The mod has no telemetry and no network service of its own; checkpoints and exports stay on this computer.
 - Progress, unlocks, statistics, achievements and run history are **not** rolled back. Replaying a fight may count again in the statistics.
 - Only single-player standard and custom runs with a current save are supported. Daily runs, multiplayer and ended runs are not.
 - Checkpoints are taken when the game saves (entering and finishing a room), not on every turn.

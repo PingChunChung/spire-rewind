@@ -2,7 +2,7 @@
 
 A mod for Slay the Spire 2 that keeps a checkpoint every time the game saves your single-player run, lets you rewind to an earlier floor from the pause menu or the main menu, logs the choices and fight decisions of every floor, and exports the whole run as a single offline HTML page.
 
-Version 0.1.0, built against game v0.107.1. Early release: it has been played through on an isolated copy of the game with the Steam backend off, but **not with Steam Cloud sync**. Read [What is restored](#what-is-restored-and-what-is-not) and [Limits](#limits) before using it on a run you care about.
+Version 0.1.0, built against game v0.107.1. Early release: it has been played through on an isolated copy of the game and tested with Steam Cloud sync on one machine. Read [What is restored](#what-is-restored-and-what-is-not) and [Limits](#limits) before using it on a run you care about.
 
 ## What it does
 
@@ -69,7 +69,7 @@ Checkpoints follow the game's save points; you cannot return to an arbitrary tur
 
 - Single-player standard and custom runs with a current save only. Daily runs, multiplayer, combat replays, ended runs and imports from other runs are not supported.
 - A restore is refused when the game version, save schema, character, run identity or mod version list does not match the checkpoint.
-- The mod rewrites the active run save through the game's own save system. It keeps a recovery checkpoint first and verifies what it wrote, but **it has not been tested with Steam Cloud sync yet**. Back up your save folder before using it on an important run, and expect cloud conflicts to be possible until that test exists. On the Steam backend the restore checks that the local and cloud copies agree, writes, reads back and checks the persisted state; it may refuse when offline, over quota or when the copies differ. The manual test the release still needs is listed in [docs/TESTING.md](docs/TESTING.md#steam-cloud-manual-acceptance).
+- The mod rewrites the active run save through the game's own save system. It keeps a recovery checkpoint first and verifies what it wrote, and on the Steam backend it first checks that the local and cloud copies agree, then writes, reads back and checks the persisted state. It refuses when the copies differ (`cloud_not_in_sync`). The Steam Cloud cases in [docs/TESTING.md](docs/TESTING.md#steam-cloud-manual-acceptance) passed on one machine; a near-full cloud quota and a game update between checkpoint and restore have not been tested yet. Backing up your save folder before using it on an important run is still a good idea.
 - Checkpoints, archives and exports are stored only on this machine under the current account and profile (`modded/profileN/rewind/`); they are not synced. The number of retained runs is capped, the size of a long run with many rewinds is not. One checkpoint is at most 32 MiB, one replay archive 64 MiB.
 - The game's own decision history is recorded only at stable decision points; a card that ends a fight may be missing from the snapshots, and the recorded choices do not form branches. Choices made again after a rewind are appended, with the earlier attempt kept.
 
@@ -102,7 +102,9 @@ The same steps apply when the Rewind dialog cannot list the run because the curr
 
 ## Verification status
 
-Tested on 2026-11-01 on an isolated copy of game v0.107.1 (Ironclad, Ascension 0, Steam backend off, Spire Link loaded alongside as the test driver): both mods load without errors; checkpoints on room entry and room completion match floor, HP, gold and deck; `choices.json` records card reward, shop purchase, card removal and event option; decision snapshots carry block, hand, played cards and intents; rewind from the pause menu and from the main menu, including the recovery checkpoint and `rewind.json`; the replayed fight repeated every decision point (15/15 and 14/14: hands, draw piles, enemy HP and intents); the in-game export equals the command-line export; normal exit and continue after restart. The restyled dialog and a rewind through its confirm button were checked the same day. Steam Cloud sync has not been tested.
+Tested on 2026-11-01 on an isolated copy of game v0.107.1 (Ironclad, Ascension 0, Steam backend off, Spire Link loaded alongside as the test driver): both mods load without errors; checkpoints on room entry and room completion match floor, HP, gold and deck; `choices.json` records card reward, shop purchase, card removal and event option; decision snapshots carry block, hand, played cards and intents; rewind from the pause menu and from the main menu, including the recovery checkpoint and `rewind.json`; the replayed fight repeated every decision point (15/15 and 14/14: hands, draw piles, enemy HP and intents); the in-game export equals the command-line export; normal exit and continue after restart. The restyled dialog and a rewind through its confirm button were checked the same day.
+
+On 2026-11-08 the Steam Cloud cases C1, C1b, C2, C3, C4 and C6 of docs/TESTING.md passed on one machine with a real Steam account (game v0.107.1, Ironclad, Ascension 0): rewind from the main menu and the pause menu with cloud sync on, the rewound save uploaded and continued after a restart without a conflict dialog, `rewind/` never uploaded, a rewind with Steam Cloud turned off for the game and then turned back on, a rewind in Steam offline mode, a game process killed during a rewind, and a rewind refused with `cloud_not_in_sync` when the Steam cloud copy differed (simulated by editing Steam's local cloud copy, since one machine cannot produce a real conflict). Not tested: a near-full cloud quota (C7), a game update (C5) and the account-wide Steam Cloud switch.
 
 ## Build and test
 

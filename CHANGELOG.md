@@ -4,7 +4,7 @@ Versions follow SemVer and stay at 0.x while the game is in Early Access. A rele
 
 ## 0.1.0
 
-First public release. Tested on game v0.107.1, singleplayer only; not yet tested with Steam Cloud sync.
+First public release. Tested on game v0.107.1, singleplayer only, including the Steam Cloud cases C1, C1b, C2, C3, C4 and C6 of `docs/TESTING.md` on one machine.
 
 - Automatic checkpoints: every native run save (room entry, room completion, the regular autosave) is copied into the profile's `rewind/` folder with metadata (act, floor, room, HP, gold, deck size, game version, mod list, SHA-256 of the payload).
 - Rewind from the pause menu or the main menu: pick a checkpoint, confirm, and the mod saves a recovery checkpoint, replaces the run save through the game's own save interface and reloads the run. A restore is refused when the game version, save schema, character, run identity or mod version list differs from the checkpoint; if loading fails it tries to put the original save back and reports what happened.
