@@ -4,6 +4,13 @@ A mod for Slay the Spire 2 that keeps a checkpoint every time the game saves you
 
 Version 0.1.0, built against game v0.107.1. Early release: it has been played through on an isolated copy of the game and tested with Steam Cloud sync on one machine. Read [What is restored](#what-is-restored-and-what-is-not) and [Limits](#limits) before using it on a run you care about.
 
+![Spire Rewind checkpoint list in the pause menu](docs/images/rewind_01_checkpoints.jpg)
+
+| | |
+|---|---|
+| ![Rewind entry in the pause menu](docs/images/rewind_02_pause.jpg) | ![Rewind confirmation](docs/images/rewind_03_confirm.jpg) |
+| ![Offline HTML replay](docs/images/rewind_04_replay.jpg) | |
+
 ## What it does
 
 - **Automatic checkpoints.** Whenever the game writes its own run save (entering a room, finishing a room, the regular autosave), the mod copies the full native save into the profile's `rewind/` folder with a small metadata file: act, floor, room, HP, gold, deck size, game version, mod list and a SHA-256 of the payload. Nothing is changed in the game's own files at this point.
